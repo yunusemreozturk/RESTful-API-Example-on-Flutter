@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": 7,
+      "email": "michael.lawson@reqres.in",
+      "first_name": "Michael",
+      "last_name": "Lawson",
+      "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    },
+    {
+      "id": 8,
+      "email": "lindsay.ferguson@reqres.in",
+      "first_name": "Lindsay",
+      "last_name": "Ferguson",
+      "avatar": "https://reqres.in/img/faces/8-image.jpg"
+    },
+    {
+      "id": 9,
+      "email": "tobias.funke@reqres.in",
+      "first_name": "Tobias",
+      "last_name": "Funke",
+      "avatar": "https://reqres.in/img/faces/9-image.jpg"
+    },
+    {
+      "id": 10,
+      "email": "byron.fields@reqres.in",
+      "first_name": "Byron",
+      "last_name": "Fields",
+      "avatar": "https://reqres.in/img/faces/10-image.jpg"
+    },
+    {
+      "id": 11,
+      "email": "george.edwards@reqres.in",
+      "first_name": "George",
+      "last_name": "Edwards",
+      "avatar": "https://reqres.in/img/faces/11-image.jpg"
+    },
+    {
+      "id": 12,
+      "email": "rachel.howell@reqres.in",
+      "first_name": "Rachel",
+      "last_name": "Howell",
+      "avatar": "https://reqres.in/img/faces/12-image.jpg"
+    },
+    {
+      "id": 13,
+      "email": "Yeni Hesap",
+      "first_name": "Yeni",
+      "last_name": "Hesap",
+      "avatar": ""
+    },
+    {
+      "id": 14,
+      "email": "Yeni Hesap",
+      "first_name": "Yeni",
+      "last_name": "Hesap",
+      "avatar": ""
+    },
+    {
+      "id": 15,
+      "email": "Yeni Hesap",
+      "first_name": "Yeni",
+      "last_name": "Hesap",
+      "avatar": ""
+    },
+    {
+      "id": 16,
+      "email": null,
+      "first_name": null,
+      "last_name": null,
+      "avatar": null
+    },
+    {
+      "id": 17,
+      "email": "emre.ozturk",
+      "first_name": "Emre",
+      "last_name": "Öztürk",
+      "avatar": null
+    },
+    {
+      "id": 18,
+      "email": "asdf",
+      "first_name": "asdfa",
+      "last_name": "asdf",
+      "avatar": null
+    },
+    {
+      "id": 19,
+      "email": "kaanvarlgmail.com",
+      "first_name": "Kaan",
+      "last_name": "Varl",
+      "avatar": null
+    }
+  ]
+}

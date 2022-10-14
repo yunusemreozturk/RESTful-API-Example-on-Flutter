@@ -200,7 +200,9 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                     ElevatedButton(
-                      onPressed: () {_userViewModel.delet},
+                      onPressed: () async {
+                        await _userViewModel.deleteUser('');
+                      },
                       child: const Text('Delete'),
                     ),
                   ],
