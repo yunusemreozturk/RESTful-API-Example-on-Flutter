@@ -63,4 +63,28 @@ class UserService {
       print('Error: UserService(deleteUser): ${e.toString()}');
     }
   }
+
+  Future<UserModel?> changeUserInformation(
+    String id,
+    UserModelData changedUserModel,
+  ) async {
+    try {
+      var res = await http.put(
+        Uri.parse('$localUrl/$id'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(changedUserModel),
+      );
+
+      if (res.statusCode == 200) {
+        return UserModel.fromJson(jsonDecode(res.body));
+      } else {
+        print(
+            'Error: UserService(changeUserInformation) statusCode: ${res.statusCode}');
+      }
+    } catch (e) {
+      print('Error: UserService(changeUserInformation): ${e.toString()}');
+    }
+  }
 }

@@ -56,4 +56,31 @@ class UserViewModel extends GetxController {
       print('Error: userViewModel(deleteUser): ${e.toString()}');
     }
   }
+
+  Future<bool?> changeUserInformation(
+      {String? id,
+      UserModelData? changedUserModel,
+      UserModelData? oldUserModel}) async {
+    try {
+      if (oldUserModel!.firstName == changedUserModel!.firstName) {
+        changedUserModel.firstName = oldUserModel.firstName;
+      } else if (oldUserModel.lastName == changedUserModel.lastName) {
+        changedUserModel.lastName = oldUserModel.lastName;
+      } else if (oldUserModel.email == oldUserModel.email) {
+        changedUserModel.email = oldUserModel.email;
+      }
+
+      var res = await _userService.changeUserInformation(id!, changedUserModel);
+
+      if (res != null) {
+        userModelUpper.value = res;
+
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print('Error: userViewModel(deleteUser): ${e.toString()}');
+    }
+  }
 }

@@ -8,7 +8,7 @@ import '../viewmodels/user_view_models.dart';
 class HomeScreen extends StatelessWidget {
   final UserViewModel _userViewModel = Get.find();
   final _addUserForm = GlobalKey<FormState>();
-  final _deleteUserForm = GlobalKey<FormState>();
+  final _changeUserInfoForm = GlobalKey<FormState>();
 
   HomeScreen({super.key});
 
@@ -49,6 +49,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   ListTile userCard(String avatarUrl, String name, String email, String id) {
+    String? changedName, changedEmail;
     return ListTile(
       leading: CircleAvatar(
         radius: Get.height * .04,
@@ -71,14 +72,100 @@ class HomeScreen extends StatelessWidget {
       ),
       title: Text(name),
       subtitle: Text(email),
-      trailing: GestureDetector(
-        onTap: () async {
-          await _userViewModel.deleteUser(id);
-        },
-        child: const Icon(
-          Icons.delete,
-          size: 30,
-        ),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          GestureDetector(
+            onTap: () async {
+              await _userViewModel.deleteUser(id);
+            },
+            child: const Icon(
+              Icons.delete,
+              size: 30,
+            ),
+          ),
+          const SizedBox(width: 10),
+          GestureDetector(
+            onTap: () async {
+              Get.defaultDialog(
+                title: 'Change User Info',
+                content: SizedBox(
+                  height: Get.height * .2,
+                  child: Center(
+                    child: Form(
+                      key: _changeUserInfoForm,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: InputDecoration(hintText: name),
+                              onSaved: (String? saved) {
+                                changedName = saved!;
+                              },
+                            ),
+                            TextFormField(
+                              decoration: InputDecoration(hintText: email),
+                              onSaved: (String? saved) {
+                                changedEmail = saved!;
+                              },
+                            ),
+                            ElevatedButton(
+                              onPressed: () async {
+                                if (_changeUserInfoForm.currentState!
+                                    .validate()) {
+                                  _changeUserInfoForm.currentState!.save();
+
+                                  var res = await _userViewModel
+                                      .changeUserInformation(
+                                    id: id,
+                                    changedUserModel: UserModelData(
+                                      email: changedEmail,
+                                      firstName: changedName?.split(' ')[0],
+                                      lastName: changedName?.split(' ')[1],
+                                      id: int.parse(id),
+                                      avatar: avatarUrl,
+                                    ),
+                                    oldUserModel: UserModelData(
+                                      email: email,
+                                      firstName: name.split(' ')[0],
+                                      lastName: name.split(' ')[1],
+                                      id: int.parse(id),
+                                      avatar: avatarUrl,
+                                    ),
+                                  );
+
+                                  if (res == true) {
+                                    Get.back();
+                                    Get.defaultDialog(
+                                      title: '',
+                                      titleStyle: const TextStyle(fontSize: 0),
+                                      content: const Text('Success'),
+                                    );
+                                  } else {
+                                    Get.defaultDialog(
+                                      title: '',
+                                      titleStyle: const TextStyle(fontSize: 0),
+                                      content: const Text('Failed'),
+                                    );
+                                  }
+                                }
+                              },
+                              child: const Text('Add'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+            child: const Icon(
+              Icons.more_horiz,
+              size: 30,
+            ),
+          ),
+        ],
       ),
     );
   }
