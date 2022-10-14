@@ -41,55 +41,6 @@
       "first_name": "Rachel",
       "last_name": "Howell",
       "avatar": "https://reqres.in/img/faces/12-image.jpg"
-    },
-    {
-      "id": 13,
-      "email": "Yeni Hesap",
-      "first_name": "Yeni",
-      "last_name": "Hesap",
-      "avatar": ""
-    },
-    {
-      "id": 14,
-      "email": "Yeni Hesap",
-      "first_name": "Yeni",
-      "last_name": "Hesap",
-      "avatar": ""
-    },
-    {
-      "id": 15,
-      "email": "Yeni Hesap",
-      "first_name": "Yeni",
-      "last_name": "Hesap",
-      "avatar": ""
-    },
-    {
-      "id": 16,
-      "email": null,
-      "first_name": null,
-      "last_name": null,
-      "avatar": null
-    },
-    {
-      "id": 17,
-      "email": "emre.ozturk",
-      "first_name": "Emre",
-      "last_name": "Öztürk",
-      "avatar": null
-    },
-    {
-      "id": 18,
-      "email": "asdf",
-      "first_name": "asdfa",
-      "last_name": "asdf",
-      "avatar": null
-    },
-    {
-      "id": 19,
-      "email": "kaanvarlgmail.com",
-      "first_name": "Kaan",
-      "last_name": "Varl",
-      "avatar": null
     }
   ]
 }

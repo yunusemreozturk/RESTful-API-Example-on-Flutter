@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Restful Example'),
         centerTitle: true,
-        actions: [addUser(), deleteUser()],
+        actions: [addUser()],
       ),
       body: StreamBuilder(
         stream: _userViewModel.userStream(),
@@ -33,8 +33,9 @@ class HomeScreen extends StatelessWidget {
                     '${data?[index]?.firstName} ${data?[index]?.lastName}';
                 String email = '${data?[index]?.email}';
                 String avatarUrl = '${data?[index]?.avatar}';
+                String? id = data?[index]?.id.toString();
 
-                return userCard(avatarUrl, name, email);
+                return userCard(avatarUrl, name, email, id!);
               },
             );
           } else {
@@ -47,7 +48,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  ListTile userCard(String avatarUrl, String name, String email) {
+  ListTile userCard(String avatarUrl, String name, String email, String id) {
     return ListTile(
       leading: CircleAvatar(
         radius: Get.height * .04,
@@ -70,6 +71,15 @@ class HomeScreen extends StatelessWidget {
       ),
       title: Text(name),
       subtitle: Text(email),
+      trailing: GestureDetector(
+        onTap: () async {
+          await _userViewModel.deleteUser(id);
+        },
+        child: const Icon(
+          Icons.delete,
+          size: 30,
+        ),
+      ),
     );
   }
 
@@ -168,52 +178,6 @@ class HomeScreen extends StatelessWidget {
       },
       child: const Icon(
         Icons.add,
-        size: 30,
-      ),
-    );
-  }
-
-  deleteUser() {
-    String? name;
-    return GestureDetector(
-      onTap: () {
-        Get.defaultDialog(
-          title: 'Delete User',
-          content: SizedBox(
-            height: Get.height * .15,
-            child: Center(
-              child: Form(
-                key: _deleteUserForm,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty || value == '') {
-                          return 'Enter some text.';
-                        }
-                        return null;
-                      },
-                      decoration:
-                          const InputDecoration(hintText: 'Name and Surname'),
-                      onSaved: (String? value) {
-                        name = value;
-                      },
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        await _userViewModel.deleteUser('');
-                      },
-                      child: const Text('Delete'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-      child: const Icon(
-        Icons.delete,
         size: 30,
       ),
     );

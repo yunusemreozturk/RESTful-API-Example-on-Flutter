@@ -41,8 +41,18 @@ class UserViewModel extends GetxController {
     }
   }
 
-  Future<bool?> deleteUser(String name) async {
-    try {} catch (e) {
+  Future<bool?> deleteUser(String id) async {
+    try {
+      var res = await _userService.deleteUser(id);
+
+      if (res != null) {
+        userModelUpper.value = res;
+
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
       print('Error: userViewModel(deleteUser): ${e.toString()}');
     }
   }
