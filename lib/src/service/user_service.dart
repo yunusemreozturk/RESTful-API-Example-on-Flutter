@@ -4,7 +4,7 @@ import '../models/user_model.dart';
 import 'package:http/http.dart' as http;
 
 class UserService {
-  final String localUrl = 'http://192.168.43.166:3000/users';
+  final String localUrl = 'http://your-ip-address:3000/users';
 
   Future<UserModel?> fetchUsers() async {
     try {
