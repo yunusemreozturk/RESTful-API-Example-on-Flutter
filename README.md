@@ -1,7 +1,7 @@
 On this example, I used fake RESTful API. Before the run the project make sure configure all the fake RESTful API settings. 
   
   <h2>Getting started </h2>
-	<h3>- [Install JSON Server] (https://github.com/typicode/json-server)</h3>
+	<h3>- [Install and Configure Fake JSON Server] (https://github.com/typicode/json-server)</h3>
 
 	npm install -g json-server 
 			
